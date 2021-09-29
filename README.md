@@ -17,12 +17,10 @@ def modular_inverse(a, m):
         if (a * x) % m == 1:
             return x
     return None
- 
-def encrypt(text, encryptor,n):
-    encrypted_message = ''
-    for i in text:
-        encrypted_character=modular_inverse(ord(i),n)
-        if encrypted_character==None:
-            print('Modular multiplicative inverse can not be found for block '+str(ord(i)))
-        encrypted_message += chr(encrypted_character)
-    return encrypted_message
+   
+def get_comprime_numbers(phi, n):
+    sample = []
+    for i in range(2, phi + 1):
+        if gcd(i, phi) == 1 and gcd(i, n) == 1:
+            sample.append(i)
+    return sample

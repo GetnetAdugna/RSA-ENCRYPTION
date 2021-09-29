@@ -59,5 +59,16 @@ def encrypt(text, encryptor,n):
             print('Modular multiplicative inverse can not be found for block '+str(ord(i)))
         decrypted_message += chr(decrypted_character)
     return decrypted_message
+ def start():
+    n,phi=getinput()
+    encryptor, decryptor = get_encryptor_decryptor_value(n, phi)
+    text = input("Enter a message to encrypt: ")
+    print("Original Message: " + text)
+    encrypted_message = encrypt(text,encryptor,n)
+    print("Encrypted message: " + encrypted_message)
+    decrypted_message = decrypt(encrypted_message,decryptor,n)
+    print("Decrypted message: " + decrypted_message)
+
+start()
 
 

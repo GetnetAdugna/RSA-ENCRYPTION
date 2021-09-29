@@ -24,3 +24,11 @@ def get_comprime_numbers(phi, n):
         if gcd(i, phi) == 1 and gcd(i, n) == 1:
             sample.append(i)
     return sample
+def encrypt(text, encryptor,n):
+    encrypted_message = ''
+    for i in text:
+        encrypted_character=modular_inverse(ord(i)**encryptor,n)
+        if encrypted_character==None:
+            print('Modular multiplicative inverse can not be found for block '+str(ord(i)))
+        encrypted_message += chr(encrypted_character)
+    return encrypted_message

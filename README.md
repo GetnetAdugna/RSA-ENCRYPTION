@@ -32,3 +32,13 @@ def encrypt(text, encryptor,n):
             print('Modular multiplicative inverse can not be found for block '+str(ord(i)))
         encrypted_message += chr(encrypted_character)
     return encrypted_message
+ def decrypt(text, decryptor,n):
+    decrypted_message = ''
+    for i in text:
+        decrypted_character=modular_inverse(ord(i)**decryptor,n)
+        if decrypted_character==None:
+            print('Modular multiplicative inverse can not be found for block '+str(ord(i)))
+        decrypted_message += chr(decrypted_character)
+    return decrypted_message
+
+

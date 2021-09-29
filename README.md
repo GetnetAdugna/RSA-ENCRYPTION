@@ -11,3 +11,9 @@ def getinput():
     phi=(first_prime-1)*(second_prime-1)
     print(f"phi = ({first_prime} - 1) *({second_prime} - 1) = " + str(phi) + "\n")
     return n,phi
+
+def modular_inverse(a, m):
+    for x in range(1, m):
+        if (a * x) % m == 1:
+            return x
+    return None

@@ -17,6 +17,25 @@ def modular_inverse(a, m):
         if (a * x) % m == 1:
             return x
     return None
+def gcd(first_number, second_number):
+    while True:
+        if second_number==0:
+            break
+        else:
+            c = first_number % second_number
+            first_number = second_number
+            second_number = c
+    return first_number
+
+
+def get_encryptor_decryptor_value(n, phi):
+    print("Select an encryptor value from the following list of numbers: ")
+    print(str(get_comprime_numbers(phi, n)))
+    encryptor=int(input())
+    decryptor=modular_inverse(encryptor, phi)
+    print("Public key =  (" + str(encryptor) + ", " + str(n) + ")")
+    print("Private key = (" + str(decryptor) + ", " + str(n) + ")")
+    return encryptor,decryptor
    
 def get_comprime_numbers(phi, n):
     sample = []

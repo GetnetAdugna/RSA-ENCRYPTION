@@ -1,7 +1,3 @@
-# RSA-ENCRYPTION
-"""
-This program is designed to compute an encryption and decryption of a message sent by a user.to write it we use an RSA technique for decryption and encryption
-"""
 def getinput():
     first_prime=eval(input('Enter first prime a: '))
     second_prime=eval(input('Enter second prime b: '))
@@ -17,6 +13,14 @@ def modular_inverse(a, m):
         if (a * x) % m == 1:
             return x
     return None
+
+def get_comprime_numbers(phi, n):
+    sample = []
+    for i in range(2, phi + 1):
+        if gcd(i, phi) == 1 and gcd(i, n) == 1:
+            sample.append(i)
+    return sample
+
 def gcd(first_number, second_number):
     while True:
         if second_number==0:
@@ -36,13 +40,7 @@ def get_encryptor_decryptor_value(n, phi):
     print("Public key =  (" + str(encryptor) + ", " + str(n) + ")")
     print("Private key = (" + str(decryptor) + ", " + str(n) + ")")
     return encryptor,decryptor
-   
-def get_comprime_numbers(phi, n):
-    sample = []
-    for i in range(2, phi + 1):
-        if gcd(i, phi) == 1 and gcd(i, n) == 1:
-            sample.append(i)
-    return sample
+
 def encrypt(text, encryptor,n):
     encrypted_message = ''
     for i in text:
@@ -51,7 +49,8 @@ def encrypt(text, encryptor,n):
             print('Modular multiplicative inverse can not be found for block '+str(ord(i)))
         encrypted_message += chr(encrypted_character)
     return encrypted_message
- def decrypt(text, decryptor,n):
+
+def decrypt(text, decryptor,n):
     decrypted_message = ''
     for i in text:
         decrypted_character=modular_inverse(ord(i)**decryptor,n)
@@ -59,7 +58,9 @@ def encrypt(text, encryptor,n):
             print('Modular multiplicative inverse can not be found for block '+str(ord(i)))
         decrypted_message += chr(decrypted_character)
     return decrypted_message
- def start():
+
+
+def start():
     n,phi=getinput()
     encryptor, decryptor = get_encryptor_decryptor_value(n, phi)
     text = input("Enter a message to encrypt: ")
@@ -70,5 +71,3 @@ def encrypt(text, encryptor,n):
     print("Decrypted message: " + decrypted_message)
 
 start()
-
-
